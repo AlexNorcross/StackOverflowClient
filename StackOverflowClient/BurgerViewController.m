@@ -64,11 +64,13 @@
   CGPoint pointTranslated = [slide translationInView:self.view];
   CGPoint velocity = [slide velocityInView:self.view];
   
+  //Slide top view controller
   if (velocity.x > 0 || self.topViewController.view.frame.origin.x > 0) {
     self.topViewController.view.center = CGPointMake(self.topViewController.view.center.x + pointTranslated.x, self.topViewController.view.center.y);
     [slide setTranslation:CGPointZero inView:self.view];
   } //end if
   
+  //Open/Close top view controller
   if (slide.state == UIGestureRecognizerStateEnded) {
     __weak BurgerViewController *weakSelf = self;
     if (self.topViewController.view.frame.origin.x > self.view.frame.size.width / 3) { //open
