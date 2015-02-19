@@ -8,6 +8,7 @@
 
 #import "MenuTableViewController.h"
 #import "WebOAuthViewController.h"
+#import "BurgerViewController.h"
 
 @interface MenuTableViewController ()
 
@@ -19,14 +20,20 @@
   [super viewDidLoad];
 } //end func
 
+
 - (void) viewDidAppear:(BOOL)animated {
   [super viewDidAppear:animated];
   
+  //Check for token; if none, obtain.
   NSString *token = [[NSUserDefaults standardUserDefaults] stringForKey:@"token"];
   if (token == nil) {
     WebOAuthViewController *webViewController = [[WebOAuthViewController alloc] init];
     [self presentViewController:webViewController animated:true completion:^{
     }];
   } //end if
+} //end func
+
+- (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+  self.changeTopViewController(indexPath.row);
 } //end func
 @end

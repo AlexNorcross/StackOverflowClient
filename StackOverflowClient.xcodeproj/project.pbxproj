@@ -11,6 +11,9 @@
 		BA06BBB41A93DDC3003236E8 /* QuestionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BA06BBB31A93DDC3003236E8 /* QuestionTableViewCell.m */; };
 		BA06BBB71A93E5F9003236E8 /* StackOverflowService.m in Sources */ = {isa = PBXBuildFile; fileRef = BA06BBB61A93E5F9003236E8 /* StackOverflowService.m */; };
 		BA06BBBA1A93E779003236E8 /* Question.m in Sources */ = {isa = PBXBuildFile; fileRef = BA06BBB91A93E779003236E8 /* Question.m */; };
+		BA06BBF81A954564003236E8 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA06BBF71A954564003236E8 /* ProfileViewController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		BA06BBFB1A954582003236E8 /* QuestionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA06BBFA1A954582003236E8 /* QuestionsViewController.m */; };
+		BA06BBFE1A955646003236E8 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = BA06BBFD1A955646003236E8 /* User.m */; };
 		BAAD4D061A92B9D400783CFD /* WebOAuthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BAAD4D051A92B9D400783CFD /* WebOAuthViewController.m */; };
 		BADAD9411A92927F00C9ED09 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BADAD9401A92927F00C9ED09 /* main.m */; };
 		BADAD9441A92927F00C9ED09 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BADAD9431A92927F00C9ED09 /* AppDelegate.m */; };
@@ -42,6 +45,13 @@
 		BA06BBB61A93E5F9003236E8 /* StackOverflowService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StackOverflowService.m; sourceTree = "<group>"; };
 		BA06BBB81A93E779003236E8 /* Question.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Question.h; sourceTree = "<group>"; };
 		BA06BBB91A93E779003236E8 /* Question.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Question.m; sourceTree = "<group>"; };
+		BA06BBF61A954564003236E8 /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
+		BA06BBF71A954564003236E8 /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
+		BA06BBF91A954582003236E8 /* QuestionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestionsViewController.h; sourceTree = "<group>"; };
+		BA06BBFA1A954582003236E8 /* QuestionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestionsViewController.m; sourceTree = "<group>"; };
+		BA06BBFC1A955646003236E8 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
+		BA06BBFD1A955646003236E8 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
+		BA06BBFF1A9655DE003236E8 /* MenuTableRows.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MenuTableRows.h; sourceTree = "<group>"; };
 		BAAD4D041A92B9D400783CFD /* WebOAuthViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebOAuthViewController.h; sourceTree = "<group>"; };
 		BAAD4D051A92B9D400783CFD /* WebOAuthViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebOAuthViewController.m; sourceTree = "<group>"; };
 		BADAD93B1A92927F00C9ED09 /* StackOverflowClient.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StackOverflowClient.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -145,12 +155,17 @@
 				BADAD96B1A9294AB00C9ED09 /* BurgerViewController.m */,
 				BADAD96D1A929AE800C9ED09 /* MenuTableViewController.h */,
 				BADAD96E1A929AE800C9ED09 /* MenuTableViewController.m */,
+				BA06BBFF1A9655DE003236E8 /* MenuTableRows.h */,
 				BAAD4D041A92B9D400783CFD /* WebOAuthViewController.h */,
 				BAAD4D051A92B9D400783CFD /* WebOAuthViewController.m */,
 				BA06BBAF1A93DD37003236E8 /* SearchQuestionViewController.h */,
 				BA06BBB01A93DD37003236E8 /* SearchQuestionViewController.m */,
 				BA06BBB51A93E5F9003236E8 /* StackOverflowService.h */,
 				BA06BBB61A93E5F9003236E8 /* StackOverflowService.m */,
+				BA06BBF61A954564003236E8 /* ProfileViewController.h */,
+				BA06BBF71A954564003236E8 /* ProfileViewController.m */,
+				BA06BBF91A954582003236E8 /* QuestionsViewController.h */,
+				BA06BBFA1A954582003236E8 /* QuestionsViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -172,6 +187,8 @@
 			children = (
 				BA06BBB81A93E779003236E8 /* Question.h */,
 				BA06BBB91A93E779003236E8 /* Question.m */,
+				BA06BBFC1A955646003236E8 /* User.h */,
+				BA06BBFD1A955646003236E8 /* User.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -276,14 +293,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BA06BBFE1A955646003236E8 /* User.m in Sources */,
 				BADAD9441A92927F00C9ED09 /* AppDelegate.m in Sources */,
 				BADAD96C1A9294AB00C9ED09 /* BurgerViewController.m in Sources */,
 				BADAD9411A92927F00C9ED09 /* main.m in Sources */,
 				BADAD9471A92927F00C9ED09 /* StackOverflowClient.xcdatamodeld in Sources */,
 				BA06BBB11A93DD37003236E8 /* SearchQuestionViewController.m in Sources */,
 				BA06BBB41A93DDC3003236E8 /* QuestionTableViewCell.m in Sources */,
+				BA06BBFB1A954582003236E8 /* QuestionsViewController.m in Sources */,
 				BADAD96F1A929AE800C9ED09 /* MenuTableViewController.m in Sources */,
 				BA06BBBA1A93E779003236E8 /* Question.m in Sources */,
+				BA06BBF81A954564003236E8 /* ProfileViewController.m in Sources */,
 				BAAD4D061A92B9D400783CFD /* WebOAuthViewController.m in Sources */,
 				BA06BBB71A93E5F9003236E8 /* StackOverflowService.m in Sources */,
 			);

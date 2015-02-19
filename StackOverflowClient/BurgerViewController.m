@@ -7,24 +7,37 @@
 //
 
 #import "BurgerViewController.h"
+#import "MenuTableViewController.h"
+#import "ProfileViewController.h"
+#import "QuestionsViewController.h"
+#import "MenuTableRows.h"
 
 @interface BurgerViewController ()
 
 @property (strong, nonatomic) UIViewController *topViewController;
 @property (strong, nonatomic) UINavigationController *searchViewController;
+@property (strong, nonatomic) ProfileViewController *profileViewController;
+@property (strong, nonatomic) QuestionsViewController *questionsViewController;
+@property (nonatomic) NSInteger selectedRow;
+
 @property (strong, nonatomic) UIButton *burgerButton;
 
 @property (strong, nonatomic) UITapGestureRecognizer *tapToCloseBurgerOptions;
 @property (strong, nonatomic) UIPanGestureRecognizer *slideForBurgerOptions;
+
 @end
 
 @implementation BurgerViewController
+
+NSInteger const slideRightBuffer = 300;
+float const durationForShortAnimation = 0.2;
+float const durationForLongAnimation = 0.5;
 
 //Setup
 - (void)viewDidLoad {
   [super viewDidLoad];
   
-  //Add search child view controller
+  //Add child view controller
   [self addChildViewController:self.searchViewController];
   self.searchViewController.view.frame = self.view.frame;
   [self.view addSubview:self.searchViewController.view];
@@ -42,6 +55,39 @@
   [self.topViewController.view addGestureRecognizer:self.slideForBurgerOptions];
 } //end func
 
+#pragma mark - functions
+
+- (void) switchViewController:(UIViewController *)destinationViewController {
+
+  __weak BurgerViewController *weakSelf = self;
+  [UIView animateWithDuration:durationForShortAnimation animations:^{
+    //Hide top controller
+    weakSelf.topViewController.view.frame = CGRectMake(weakSelf.view.frame.size.width, weakSelf.view.frame.origin.y, weakSelf.view.frame.size.width, weakSelf.view.frame.size.height);
+  } completion:^(BOOL finished) {
+    //New top controller view frame
+    destinationViewController.view.frame = weakSelf.topViewController.view.frame;
+    
+    //Remove old top controller
+    [weakSelf.burgerButton removeFromSuperview];
+    [weakSelf.topViewController.view removeGestureRecognizer:self.slideForBurgerOptions];
+    [weakSelf.topViewController willMoveToParentViewController:nil];
+    [weakSelf.topViewController.view removeFromSuperview];
+    [weakSelf.topViewController removeFromParentViewController];
+    
+    //Set new top controller
+    weakSelf.topViewController = destinationViewController;
+    
+    [weakSelf addChildViewController:weakSelf.topViewController];
+    [weakSelf.view addSubview:weakSelf.topViewController.view];
+    [weakSelf.topViewController didMoveToParentViewController:weakSelf];
+    [weakSelf.topViewController.view addSubview:weakSelf.burgerButton];
+    [weakSelf.topViewController.view addGestureRecognizer:weakSelf.slideForBurgerOptions];
+  
+    //Show top controller
+    [weakSelf closeBurgerOptions];
+  }];
+} //end func
+
 #pragma mark - selectors
 
 //Burger button
@@ -50,8 +96,8 @@
   
   self.burgerButton.userInteractionEnabled = false;
   
-  [UIView animateWithDuration:0.5 animations:^{
-    weakSelf.topViewController.view.center = CGPointMake(weakSelf.topViewController.view.center.x + 300, weakSelf.topViewController.view.center.y);
+  [UIView animateWithDuration:durationForLongAnimation animations:^{
+    weakSelf.topViewController.view.center = CGPointMake(weakSelf.topViewController.view.center.x + slideRightBuffer, weakSelf.topViewController.view.center.y);
   } completion:^(BOOL finished) {
     [weakSelf.topViewController.view addGestureRecognizer:weakSelf.tapToCloseBurgerOptions];
   }];
@@ -75,13 +121,13 @@
     __weak BurgerViewController *weakSelf = self;
     if (self.topViewController.view.frame.origin.x > self.view.frame.size.width / 3) { //open
       self.burgerButton.userInteractionEnabled = false;
-      [UIView animateWithDuration:0.2 animations:^{
+      [UIView animateWithDuration:durationForShortAnimation animations:^{
         weakSelf.topViewController.view.center = CGPointMake(weakSelf.view.frame.size.width * 1.25, weakSelf.view.center.y);
       } completion:^(BOOL finished) {
         [weakSelf.view addGestureRecognizer:self.tapToCloseBurgerOptions];
       }];
     } else { //close
-      [UIView animateWithDuration:0.2 animations:^{
+      [UIView animateWithDuration:durationForShortAnimation animations:^{
         weakSelf.topViewController.view.center = self.view.center;
       } completion:^(BOOL finished) {
         [weakSelf.view removeGestureRecognizer:self.tapToCloseBurgerOptions];
@@ -91,25 +137,70 @@
 } //end func
 
 //Tap gesture
-- (void) tapToCloseBurgerOptions:(id) sender {
+- (void) closeBurgerOptions {
   __weak BurgerViewController *weakSelf = self;
   
   [weakSelf.topViewController.view removeGestureRecognizer:weakSelf.tapToCloseBurgerOptions];
   
-  [UIView animateWithDuration:0.5 animations:^{
+  [UIView animateWithDuration:durationForLongAnimation animations:^{
     weakSelf.topViewController.view.center = weakSelf.view.center;
   } completion:^(BOOL finished) {
     self.burgerButton.userInteractionEnabled = true;
   }];
 } //end func
 
+#pragma mark - segue
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+  MenuTableViewController *destinationViewController = segue.destinationViewController;
+  destinationViewController.changeTopViewController = ^(NSInteger row) {
+    if (self.selectedRow == row) {
+      [self closeBurgerOptions];
+    } else {
+      UIViewController *destinationVC;
+      switch (row) {
+        case rowSearch: {
+          destinationVC = self.searchViewController;
+          break;
+        } //end case
+        case rowMyQuestions: {
+          destinationVC = self.questionsViewController;
+          break;
+        } //end case
+        case rowMyProfile: {
+          destinationVC = self.profileViewController;
+          break;
+        } //end case
+        default:
+          break;
+      } //end switch
+      self.selectedRow = row;
+      [self switchViewController:destinationVC];
+    } //end if
+  }; //end block
+} //end func
+
 #pragma mark - lazy load properties
 
-- (UINavigationController * ) searchViewController {
+- (UINavigationController *) searchViewController {
   if (_searchViewController == nil) {
     _searchViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"VC_SEARCH"];
   } //end if
   return _searchViewController;
+} //end func
+
+- (ProfileViewController *) profileViewController {
+  if (_profileViewController == nil) {
+    _profileViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"VC_PROFILE"];
+  } //end if
+  return _profileViewController;
+} //end func
+
+- (QuestionsViewController *) questionsViewController {
+  if (_questionsViewController == nil) {
+    _questionsViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"VC_QUESTIONS"];
+  } //end if
+  return _questionsViewController;
 } //end func
 
 - (UIButton *) burgerButton {
@@ -121,7 +212,7 @@
 
 - (UITapGestureRecognizer *) tapToCloseBurgerOptions {
   if (_tapToCloseBurgerOptions == nil) {
-    _tapToCloseBurgerOptions = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapToCloseBurgerOptions:)];
+    _tapToCloseBurgerOptions = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(closeBurgerOptions)];
   } //end if
   return _tapToCloseBurgerOptions;
 } //end func

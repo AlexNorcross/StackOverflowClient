@@ -19,8 +19,8 @@
   // Override point for customization after application launch.
   
   //Appearance
-  [[UILabel appearance] setFont:[UIFont fontWithName:@"HiraMinProN-W3" size:17]];
-  [[UIButton appearance] setFont:[UIFont fontWithName:@"Avenir" size:17]];
+  [[UILabel appearance] setFont:[UIFont fontWithName:@"Avenir" size:17]];
+  [[UIButton appearance] setFont:[UIFont fontWithName:@"HiraMinProN-W3" size:17]];
   [UINavigationBar appearance].titleTextAttributes = [NSDictionary dictionaryWithObjectsAndKeys: [UIFont fontWithName:@"Avenir" size:17.0], NSFontAttributeName, nil];
   
   return YES;

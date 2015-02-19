@@ -7,10 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "User.h"
+
 
 @interface StackOverflowService : NSObject
 
 +(id) sharedService;
+
 -(void) fetchQuestionsWithSearchTerm: (NSString *)searchTerm completionHandler:(void (^)(NSArray *results, NSString *error))completionHandler;
+
 -(void) fetchAvatarImageFromURL: (NSURL *)imageURL completionHandler:(void (^)(UIImage *avatarImage))completionHandler;
+
+-(void) fetchInformationForMe: (void (^)(User *myProfile, NSString *error))completionHandler;
+
 @end

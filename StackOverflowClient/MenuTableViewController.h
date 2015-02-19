@@ -10,4 +10,6 @@
 
 @interface MenuTableViewController : UITableViewController
 
+@property(nonatomic, strong) void (^changeTopViewController)(NSInteger row);
+
 @end
