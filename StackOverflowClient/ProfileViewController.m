@@ -31,9 +31,6 @@
       }];
       self.labelDisplayName.text = myProfile.displayName;
       self.labelLink.text = myProfile.link;
-      
-      //[myProfile release];
-      //[error release];
     } else {
       NSLog(@"%@", error);
     } //end if

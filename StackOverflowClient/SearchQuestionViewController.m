@@ -30,6 +30,11 @@
   self.searchBarQuestions.delegate = self;
 } //end func
 
+- (void) viewWillAppear:(BOOL)animated {
+  [super viewWillAppear:animated];
+  [self.tableQuestions reloadData];
+} //end func
+
 #pragma mark - table view data source
 
 //Cell count

@@ -85,8 +85,8 @@
                                                 <constraint firstItem="vYg-sM-y25" firstAttribute="leading" secondItem="Meh-gq-abC" secondAttribute="leadingMargin" constant="15" id="P3g-a1-mSi"/>
                                                 <constraint firstItem="2a2-Fr-6IF" firstAttribute="leading" secondItem="vYg-sM-y25" secondAttribute="trailing" constant="10" id="VCF-DO-rQQ"/>
                                                 <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="2a2-Fr-6IF" secondAttribute="bottom" constant="5" id="dKj-bl-CSc"/>
+                                                <constraint firstItem="2a2-Fr-6IF" firstAttribute="top" secondItem="Meh-gq-abC" secondAttribute="topMargin" constant="5" id="gEA-DE-WPb"/>
                                                 <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="vYg-sM-y25" secondAttribute="bottom" constant="5" id="glK-TV-bOx"/>
-                                                <constraint firstItem="vYg-sM-y25" firstAttribute="top" secondItem="Meh-gq-abC" secondAttribute="topMargin" constant="5" id="vFy-Ia-ozC"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
