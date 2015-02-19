@@ -39,7 +39,4 @@
     } //end if
   }]; //end block
 } //end func
-
-//- (void) dealloc {
-//} //end func
 @end

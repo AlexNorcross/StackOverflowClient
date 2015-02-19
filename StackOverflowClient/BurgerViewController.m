@@ -124,13 +124,13 @@ float const durationForLongAnimation = 0.5;
       [UIView animateWithDuration:durationForShortAnimation animations:^{
         weakSelf.topViewController.view.center = CGPointMake(weakSelf.view.frame.size.width * 1.25, weakSelf.view.center.y);
       } completion:^(BOOL finished) {
-        [weakSelf.view addGestureRecognizer:self.tapToCloseBurgerOptions];
+        [weakSelf.topViewController.view addGestureRecognizer:self.tapToCloseBurgerOptions];
       }];
     } else { //close
       [UIView animateWithDuration:durationForShortAnimation animations:^{
         weakSelf.topViewController.view.center = self.view.center;
       } completion:^(BOOL finished) {
-        [weakSelf.view removeGestureRecognizer:self.tapToCloseBurgerOptions];
+        [weakSelf.topViewController.view removeGestureRecognizer:self.tapToCloseBurgerOptions];
       }];
     } //end if
   } //end if
