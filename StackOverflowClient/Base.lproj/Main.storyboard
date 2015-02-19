@@ -65,7 +65,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vYg-sM-y25">
-                                                    <rect key="frame" x="23" y="13" width="70" height="70"/>
+                                                    <rect key="frame" x="23" y="15" width="70" height="70"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="70" id="BJu-Uu-J6N"/>
                                                         <constraint firstAttribute="height" constant="70" id="YCN-IN-f4T"/>
@@ -80,13 +80,12 @@
                                                 </textView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="vYg-sM-y25" firstAttribute="top" secondItem="2a2-Fr-6IF" secondAttribute="top" id="EvQ-9u-8B1"/>
+                                                <constraint firstAttribute="centerY" secondItem="vYg-sM-y25" secondAttribute="centerY" id="8N4-c3-1cX"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="2a2-Fr-6IF" secondAttribute="trailing" constant="15" id="NRy-On-81G"/>
                                                 <constraint firstItem="vYg-sM-y25" firstAttribute="leading" secondItem="Meh-gq-abC" secondAttribute="leadingMargin" constant="15" id="P3g-a1-mSi"/>
                                                 <constraint firstItem="2a2-Fr-6IF" firstAttribute="leading" secondItem="vYg-sM-y25" secondAttribute="trailing" constant="10" id="VCF-DO-rQQ"/>
                                                 <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="2a2-Fr-6IF" secondAttribute="bottom" constant="5" id="dKj-bl-CSc"/>
                                                 <constraint firstItem="2a2-Fr-6IF" firstAttribute="top" secondItem="Meh-gq-abC" secondAttribute="topMargin" constant="5" id="gEA-DE-WPb"/>
-                                                <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="vYg-sM-y25" secondAttribute="bottom" constant="5" id="glK-TV-bOx"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
